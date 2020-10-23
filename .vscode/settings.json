@@ -1,0 +1,5 @@
+{
+    "twig-language-2.tagMerge": true,
+    "editor.formatOnType": true,
+    "editor.suggest.insertMode": "replace"
+}

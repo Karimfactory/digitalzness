@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    <h1>Inscription</h1>
+    
+    {{ form_start(form) }}
+
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.email) }}
+    {{ form_label(form.password ) }}
+     {{ form_widget(form.password, {'type' : 'password'} ) }}
+       
+        <div class="form-group" style="margin-top:20px">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

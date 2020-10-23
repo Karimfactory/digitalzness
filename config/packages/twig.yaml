@@ -1,0 +1,9 @@
+twig:
+    paths: 
+        '%kernel.project_dir%/vendor/knplabs/knp-paginator-bundle/templates': KnpPaginator
+    default_path: '%kernel.project_dir%/templates'
+    globals:
+        categories: '@App\Service\Categories'
+        users: '@App\Service\User'
+        products: '@App\Service\Product'
+    

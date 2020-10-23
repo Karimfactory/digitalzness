@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Mon panier!{% endblock %}
+ 
+{% block body %}
+{% if cart|length > 0 %}
+<table id="list_cart" class="table">
+    <thead>
+        <th></th>
+        <th></th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th>Prix total</th>
+    </thead>
+    <tbody>
+        {% for id, product in cart %}
+            <tr data-target="{{ product.slug }}">
+                <td><img src="{{ asset(product.picture) }}" width="100px"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}€</td>
+                <td>
+                    <button data-action="update_cart" data-url="{{ url('del_cart',{slug : product.slug}) }}" class="btn btn-small btn-primary">-</button> 
+                    <span class="cart-qty">{{ product.quantity }}</span>
+                    <button data-action="update_cart" data-url="{{ url('add_cart',{slug : product.slug}) }}" class="btn btn-small btn-primary">+</button> 
+                </td>
+                <td class="cart-ttc">{{ product.price * product.quantity }}€</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+ 
+<div class="alert alert-warning" id="cart_empty"{% if cart|length > 0 %} style="display:none;"{% endif %}>Votre panier est vide</div>
+{% endblock %}
+ 
+{% block javascripts %}
+<script src="{{ asset('assets/javascript/cart.js') }}"></script>
+{% endblock %}
